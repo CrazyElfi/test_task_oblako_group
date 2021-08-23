@@ -1,12 +1,24 @@
 <template>
-  <div id="app">
+  <v-app id="inspire">
+<!--    <v-card>-->
     <Header />
-    <div class="container-custom">
-      <titleNbreadcrumb />
-      <tabsNFilters />
-      <CardList />
-    </div>
-  </div>
+
+<!--      <v-sheet-->
+<!--          id="scrolling-techniques-7"-->
+<!--          class="overflow-y-auto"-->
+<!--      >-->
+        <v-container fluid>
+          <titleNbreadcrumb />
+
+          <tabsNFilters />
+          <CardList />
+        </v-container>
+<!--      </v-sheet>-->
+<!--    <div class="container-custom">-->
+<!--      -->
+<!--    </div>-->
+<!--    </v-card>-->
+  </v-app>
 </template>
 
 <script>

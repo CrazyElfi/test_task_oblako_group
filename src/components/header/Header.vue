@@ -1,44 +1,25 @@
 <template>
-  <div class="navbar">
-    <button class="nav-item">
-      <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 2V0H18V2H0ZM0 7H18V5H0V7ZM0 12H18V10H0V12Z" fill="black" fill-opacity="0.54"/>
-      </svg>
-    </button>
+  <div>
+    <v-app-bar
+        color="white"
+        flat
+    >
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-    <button class="nav-item">
-      <img src="~@/assets/images/plus-plan.png">
-      <span>Запланировать</span>
-    </button>
+      <v-spacer></v-spacer>
 
+      <v-btn text x-small color="#1071FF">
+        <v-icon left>mdi-plus</v-icon>
+        Запланировать
+      </v-btn>
+
+    </v-app-bar>
   </div>
 </template>
 
 <script>
 export default {
-name: "Header"
+  name: 'Header',
 }
 </script>
 
-<style lang="sass">
-.navbar
-  display: flex
-  justify-content: space-between
-  align-items: center
-  margin: 25px 44px 0 25px
-  .nav-item
-    display: flex
-    justify-content: center
-    align-items: center
-    background-color: transparent
-    border: none
-    padding: 0
-    color: #1071FF
-    cursor: pointer
-    span
-      margin-left: 11px
-      font-weight: 600
-      font-size: 12px
-      line-height: 16px
-
-</style>

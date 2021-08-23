@@ -1,19 +1,36 @@
 <template>
-  <div class="wrapper">
-    <div class="breadcrumb">
-      Главная   —   Планирование
-    </div>
+  <div>
+    <v-breadcrumbs :items="items">
+      <template v-slot:divider>
+        <v-icon>mdi-minus</v-icon>
+      </template>
+    </v-breadcrumbs>
     <h1>
       <img src="~@/assets/images/union.png">
       Планирование
     </h1>
   </div>
-
 </template>
 
 <script>
 export default {
-name: "titleNbreadcrumb"
+  name: 'titleNbreadcrumb',
+  data () {
+    return {
+      items: [
+        {
+          text: 'Главная',
+          disabled: false,
+          // href: 'breadcrumbs_link_1',
+        },
+        {
+          text: 'Планирование',
+          disabled: false,
+          // href: 'breadcrumbs_link_1',
+        },
+      ],
+    }
+  },
 }
 </script>
 
@@ -30,6 +47,7 @@ name: "titleNbreadcrumb"
   font-size: 12px
   line-height: 16px
   color: rgba(0, 0, 0, 0.54)
+
   h1
     display: flex
     align-items: center
@@ -37,6 +55,7 @@ name: "titleNbreadcrumb"
     font-size: 38px
     line-height: 40px
     color: rgba(0, 0, 0, 0.87)
+
     img
       margin-right: 18px
 
