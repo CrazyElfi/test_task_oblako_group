@@ -1,37 +1,61 @@
 <template>
-  <div class="cards-wrapper">
-    <div class="cards-header">
-      <div class="card-date">Дата начала</div>
-      <div class="card-title">Название</div>
-      <div class="card-numbOfParticipant">Участников</div>
-      <div class="card-coach">Тренер</div>
-      <div class="card-percentageOfProgress">
-        Прогресс
-      </div>
-      <div class="card-button"></div>
-    </div>
-    <Card v-for="card in cards"
-          :key="card.id"
-          :card="card"/>
-  </div>
+<!--  <div class="cards-wrapper">-->
+<!--    <div class="cards-header">-->
+<!--      <div class="card-date">Дата начала</div>-->
+<!--      <div class="card-title">Название</div>-->
+<!--      <div class="card-numbOfParticipant">Участников</div>-->
+<!--      <div class="card-coach">Тренер</div>-->
+<!--      <div class="card-percentageOfProgress">-->
+<!--        Прогресс-->
+<!--      </div>-->
+<!--      <div class="card-button"></div>-->
+<!--    </div>-->
+<!--    <Card v-for="card in cards"-->
+<!--          :key="card.id"-->
+<!--          :card="card"/>-->
+<!--  </div>-->
+  <v-data-table
+      :headers="headers"
+      :items="cards"
+      class="elevation-1"
+  >
+    <template v-slot:header.name="{ header }">
+      {{ header.text.toUpperCase() }}
+    </template>
+
+    <template v-slot:item.btn="{item}">
+      <v-btn
+          class="mx-2"
+          fab
+          dark
+          small
+          color="pink">
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
+    </template>
+
+  </v-data-table>
 </template>
 
 <script>
-import Card from '@/components/cards/Card'
+// import Card from '@/components/cards/Card'
 import Api from  "@/services/api"
 
 export default {
   name: 'CardList',
   components: {
-    Card,
+    // Card,
   },
   data () {
     return {
+      headers: [],
       cards: []
     }
   },
   mounted () {
-    this.cards = Api.getPrograms()
+    this.cards = Api.getPrograms().program
+    this.headers = Api.getPrograms().headers
+
   }
 }
 </script>
