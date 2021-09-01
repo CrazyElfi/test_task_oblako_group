@@ -1,45 +1,36 @@
 <template>
-<!--  <div class="cards-wrapper">-->
-<!--    <div class="cards-header">-->
-<!--      <div class="card-date">Дата начала</div>-->
-<!--      <div class="card-title">Название</div>-->
-<!--      <div class="card-numbOfParticipant">Участников</div>-->
-<!--      <div class="card-coach">Тренер</div>-->
-<!--      <div class="card-percentageOfProgress">-->
-<!--        Прогресс-->
-<!--      </div>-->
-<!--      <div class="card-button"></div>-->
-<!--    </div>-->
-<!--    <Card v-for="card in cards"-->
-<!--          :key="card.id"-->
-<!--          :card="card"/>-->
-<!--  </div>-->
-  <v-data-table
-      :headers="headers"
-      :items="cards"
-      class="elevation-1"
-  >
-    <template v-slot:header.name="{ header }">
-      {{ header.text.toUpperCase() }}
-    </template>
+<!--  <v-data-table-->
+<!--      :headers="headers"-->
+<!--      :items="cards"-->
+<!--      class="elevation-1"-->
+<!--  >-->
+<!--    <template v-slot:header.name="{ header }">-->
+<!--      {{ header.text.toUpperCase() }}-->
+<!--    </template>-->
 
-    <template v-slot:item.btn="{item}">
-      <v-btn
-          class="mx-2"
-          fab
-          dark
-          small
-          color="pink">
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
-    </template>
 
-  </v-data-table>
+<!--    <template-->
+<!--        v-slot:item.btn="{  }">-->
+<!--      <v-btn-->
+<!--          fab-->
+<!--          color="rgba(0, 0, 0, 0.15)"-->
+<!--          elevation="0"-->
+<!--          rounded-->
+<!--          x-small-->
+<!--          @mouseover="selectItem(this)"-->
+<!--          @mouseleave="unSelectItem(this)"-->
+<!--      >-->
+<!--        <v-icon>mdi-dots-vertical</v-icon>-->
+<!--      </v-btn>-->
+<!--    </template>-->
+<!--  </v-data-table>-->
+
+
 </template>
 
 <script>
 // import Card from '@/components/cards/Card'
-import Api from  "@/services/api"
+import Api from '@/services/api'
 
 export default {
   name: 'CardList',
@@ -48,14 +39,26 @@ export default {
   },
   data () {
     return {
+      hoverCard: false,
+      selectedItem: false,
       headers: [],
-      cards: []
+      cards: [],
     }
   },
   mounted () {
     this.cards = Api.getPrograms().program
     this.headers = Api.getPrograms().headers
 
+  },
+  methods: {
+    selectItem (data) {
+      // this.selectedItem = true
+      console.log('mouseover', data)
+    },
+    unSelectItem (data) {
+      // this.selectedItem = false
+      console.log('mouseleave', data)
+    }
   }
 }
 </script>
@@ -66,6 +69,7 @@ export default {
   display: flex
   flex-direction: column
   justify-content: flex-start
+
 .cards-header
   padding: 6px 8px
   height: 30px
